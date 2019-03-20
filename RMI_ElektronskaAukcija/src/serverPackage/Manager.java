@@ -54,7 +54,8 @@ public class Manager extends UnicastRemoteObject implements IManager {
 	
 	private void notifyUsers(IEksponat item) throws RemoteException {
 		for(ICallback call : this.calls) {
-			call.callback(item.getUcesnik().getId(),item.getUcesnik().getName(),item.getUcesnik().getSurname(),item.getId(),item.getNaziv(),item.getCenu());
+			if(call != null)
+				call.callback(item.getUcesnik().getId(),item.getUcesnik().getName(),item.getUcesnik().getSurname(),item.getId(),item.getNaziv(),item.getCenu());
 		}
 	}
 
